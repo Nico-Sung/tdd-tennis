@@ -24,22 +24,14 @@ export class Jeu {
       this.pointsJoueur2++;
     }
 
-    if (this.pointsJoueur1 > QUARANTE) {
-      this.classement.enregistrer(this.joueur1, this.joueur2);
-    }
-
-    if (this.pointsJoueur2 > QUARANTE) {
-      this.classement.enregistrer(this.joueur2, this.joueur1);
+    if (this.estTermine()) {
+      this.classement.enregistrer(this.vainqueur(), this.perdant());
     }
   }
 
   score(): string {
-    if (this.pointsJoueur1 > QUARANTE) {
-      return "Victoire " + this.joueur1;
-    }
-
-    if (this.pointsJoueur2 > QUARANTE) {
-      return "Victoire " + this.joueur2;
+    if (this.estTermine()) {
+      return "Victoire " + this.vainqueur();
     }
 
     const scoreJoueur1 = ANNONCES[this.pointsJoueur1];
@@ -58,5 +50,19 @@ export class Jeu {
 
   private estTermine(): boolean {
     return this.pointsJoueur1 > QUARANTE || this.pointsJoueur2 > QUARANTE;
+  }
+
+  private vainqueur(): string {
+    if (this.pointsJoueur1 > QUARANTE) {
+      return this.joueur1;
+    }
+    return this.joueur2;
+  }
+
+  private perdant(): string {
+    if (this.pointsJoueur1 > QUARANTE) {
+      return this.joueur2;
+    }
+    return this.joueur1;
   }
 }
