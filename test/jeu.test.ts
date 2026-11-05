@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { Jeu } from "../src/jeu";
 import { classementDummy } from "./doubles/classement-dummy";
 
@@ -106,5 +106,28 @@ describe("jeu", () => {
     jeu.pointPour("Nico");
 
     expect(jeu.score()).toBe("Victoire Clementine");
+  });
+});
+
+describe("classement du tournoi", () => {
+  // spy : il garde les appels, on peut donc vérifier combien de fois et avec quels noms enregistrer a été appelé.
+  it("le résultat est enregistré une seule fois à la fin du match avec le vainqueur en premier", () => {
+    const classement = { enregistrer: vi.fn() };
+    const jeu = new Jeu("Nico", "Clementine", classement);
+
+    jeu.pointPour("Nico");
+    jeu.pointPour("Clementine");
+    jeu.pointPour("Nico");
+    jeu.pointPour("Clementine");
+    jeu.pointPour("Nico");
+    jeu.pointPour("Clementine");
+
+    expect(classement.enregistrer).not.toHaveBeenCalled();
+
+    jeu.pointPour("Clementine");
+    jeu.pointPour("Nico");
+
+    expect(classement.enregistrer).toHaveBeenCalledTimes(1);
+    expect(classement.enregistrer).toHaveBeenCalledWith("Clementine", "Nico");
   });
 });
