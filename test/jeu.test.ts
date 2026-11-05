@@ -39,4 +39,18 @@ describe("jeu", () => {
 
     expect(jeu.score()).toBe("Quarante-Trente");
   });
+
+  it("à points égaux le score s'annonce avec a", () => {
+    const jeu = new Jeu("Nico", "Clementine", classementDummy);
+
+    jeu.pointPour("Nico");
+    jeu.pointPour("Clementine");
+
+    expect(jeu.score()).toBe("Quinze-A");
+
+    jeu.pointPour("Nico");
+    jeu.pointPour("Clementine");
+
+    expect(jeu.score()).toBe("Trente-A");
+  });
 });
