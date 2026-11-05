@@ -14,6 +14,10 @@ export class Jeu {
   ) {}
 
   pointPour(joueur: string): void {
+    if (this.estTermine()) {
+      return;
+    }
+
     if (joueur === this.joueur1) {
       this.pointsJoueur1++;
     } else {
@@ -42,5 +46,9 @@ export class Jeu {
     }
 
     return scoreJoueur1 + "-" + scoreJoueur2;
+  }
+
+  private estTermine(): boolean {
+    return this.pointsJoueur1 > QUARANTE || this.pointsJoueur2 > QUARANTE;
   }
 }
