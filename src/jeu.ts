@@ -1,6 +1,7 @@
 import type { Classement } from "./classement";
 
 const ANNONCES = ["Zéro", "Quinze", "Trente", "Quarante"];
+const QUARANTE = 3;
 
 export class Jeu {
   private pointsJoueur1 = 0;
@@ -24,7 +25,7 @@ export class Jeu {
     const scoreJoueur1 = ANNONCES[this.pointsJoueur1];
     const scoreJoueur2 = ANNONCES[this.pointsJoueur2];
 
-    if (this.pointsJoueur1 === 3 && this.pointsJoueur2 === 3) {
+    if (this.pointsJoueur1 === QUARANTE && this.pointsJoueur2 === QUARANTE) {
       return "Égalité";
     }
 
