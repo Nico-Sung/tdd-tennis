@@ -24,6 +24,10 @@ export class Jeu {
     const scoreJoueur1 = ANNONCES[this.pointsJoueur1];
     const scoreJoueur2 = ANNONCES[this.pointsJoueur2];
 
+    if (this.pointsJoueur1 === 3 && this.pointsJoueur2 === 3) {
+      return "Égalité";
+    }
+
     if (this.pointsJoueur1 === this.pointsJoueur2 && this.pointsJoueur1 > 0) {
       return scoreJoueur1 + "-A";
     }
