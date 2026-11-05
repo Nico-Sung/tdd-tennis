@@ -9,4 +9,12 @@ describe("jeu", () => {
 
     expect(jeu.score()).toBe("Zéro-Zéro");
   });
+
+  it("un premier point marqué vaut quinze", () => {
+    const jeu = new Jeu("Nico", "Clementine", classementDummy);
+
+    jeu.pointPour("Nico");
+
+    expect(jeu.score()).toBe("Quinze-Zéro");
+  });
 });
