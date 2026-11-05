@@ -17,4 +17,14 @@ describe("jeu", () => {
 
     expect(jeu.score()).toBe("Quinze-Zéro");
   });
+
+  it("le score annonce les points du joueur 1 puis ceux du joueur 2", () => {
+    const jeu = new Jeu("Nico", "Clementine", classementDummy);
+
+    jeu.pointPour("Nico");
+    jeu.pointPour("Clementine");
+    jeu.pointPour("Nico");
+
+    expect(jeu.score()).toBe("Trente-Quinze");
+  });
 });
