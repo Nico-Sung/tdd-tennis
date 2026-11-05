@@ -66,4 +66,15 @@ describe("jeu", () => {
 
     expect(jeu.score()).toBe("Égalité");
   });
+
+  it("le joueur qui marque à quarante gagne le match", () => {
+    const jeu = new Jeu("Nico", "Clementine", classementDummy);
+
+    jeu.pointPour("Nico");
+    jeu.pointPour("Nico");
+    jeu.pointPour("Nico");
+    jeu.pointPour("Nico");
+
+    expect(jeu.score()).toBe("Victoire Nico");
+  });
 });
