@@ -27,4 +27,16 @@ describe("jeu", () => {
 
     expect(jeu.score()).toBe("Trente-Quinze");
   });
+
+  it("le troisième point marqué vaut quarante", () => {
+    const jeu = new Jeu("Nico", "Clementine", classementDummy);
+
+    jeu.pointPour("Nico");
+    jeu.pointPour("Clementine");
+    jeu.pointPour("Nico");
+    jeu.pointPour("Clementine");
+    jeu.pointPour("Nico");
+
+    expect(jeu.score()).toBe("Quarante-Trente");
+  });
 });
