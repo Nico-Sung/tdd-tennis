@@ -1,18 +1,29 @@
 import type { Classement } from "./classement";
 
+const ANNONCES = ["Zéro", "Quinze", "Trente"];
+
 export class Jeu {
   private pointsJoueur1 = 0;
+  private pointsJoueur2 = 0;
 
-  constructor(joueur1: string, joueur2: string, classement: Classement) {}
+  constructor(
+    private readonly joueur1: string,
+    joueur2: string,
+    classement: Classement,
+  ) {}
 
   pointPour(joueur: string): void {
-    this.pointsJoueur1++;
+    if (joueur === this.joueur1) {
+      this.pointsJoueur1++;
+    } else {
+      this.pointsJoueur2++;
+    }
   }
 
   score(): string {
-    if (this.pointsJoueur1 === 1) {
-      return "Quinze-Zéro";
-    }
-    return "Zéro-Zéro";
+    const scoreJoueur1 = ANNONCES[this.pointsJoueur1];
+    const scoreJoueur2 = ANNONCES[this.pointsJoueur2];
+
+    return scoreJoueur1 + "-" + scoreJoueur2;
   }
 }
