@@ -91,4 +91,20 @@ describe("jeu", () => {
 
     expect(jeu.score()).toBe("Victoire Clementine");
   });
+
+  it("les points marqués après la victoire sont ignorés", () => {
+    const jeu = new Jeu("Nico", "Clementine", classementDummy);
+
+    jeu.pointPour("Clementine");
+    jeu.pointPour("Clementine");
+    jeu.pointPour("Clementine");
+    jeu.pointPour("Clementine");
+
+    jeu.pointPour("Nico");
+    jeu.pointPour("Nico");
+    jeu.pointPour("Nico");
+    jeu.pointPour("Nico");
+
+    expect(jeu.score()).toBe("Victoire Clementine");
+  });
 });
