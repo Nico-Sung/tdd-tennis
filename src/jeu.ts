@@ -9,7 +9,7 @@ export class Jeu {
 
   constructor(
     private readonly joueur1: string,
-    joueur2: string,
+    private readonly joueur2: string,
     classement: Classement,
   ) {}
 
@@ -24,6 +24,10 @@ export class Jeu {
   score(): string {
     if (this.pointsJoueur1 > QUARANTE) {
       return "Victoire " + this.joueur1;
+    }
+
+    if (this.pointsJoueur2 > QUARANTE) {
+      return "Victoire " + this.joueur2;
     }
 
     const scoreJoueur1 = ANNONCES[this.pointsJoueur1];
