@@ -77,4 +77,18 @@ describe("jeu", () => {
 
     expect(jeu.score()).toBe("Victoire Nico");
   });
+
+  it("à égalité le point suivant gagne le match", () => {
+    const jeu = new Jeu("Nico", "Clementine", classementDummy);
+
+    jeu.pointPour("Nico");
+    jeu.pointPour("Clementine");
+    jeu.pointPour("Nico");
+    jeu.pointPour("Clementine");
+    jeu.pointPour("Nico");
+    jeu.pointPour("Clementine");
+    jeu.pointPour("Clementine");
+
+    expect(jeu.score()).toBe("Victoire Clementine");
+  });
 });
