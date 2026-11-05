@@ -10,7 +10,7 @@ export class Jeu {
   constructor(
     private readonly joueur1: string,
     private readonly joueur2: string,
-    classement: Classement,
+    private readonly classement: Classement,
   ) {}
 
   pointPour(joueur: string): void {
@@ -22,6 +22,14 @@ export class Jeu {
       this.pointsJoueur1++;
     } else {
       this.pointsJoueur2++;
+    }
+
+    if (this.pointsJoueur1 > QUARANTE) {
+      this.classement.enregistrer(this.joueur1, this.joueur2);
+    }
+
+    if (this.pointsJoueur2 > QUARANTE) {
+      this.classement.enregistrer(this.joueur2, this.joueur1);
     }
   }
 
