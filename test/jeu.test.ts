@@ -53,4 +53,17 @@ describe("jeu", () => {
 
     expect(jeu.score()).toBe("Trente-A");
   });
+
+  it("a quarante partout le score est égalité", () => {
+    const jeu = new Jeu("Nico", "Clementine", classementDummy);
+
+    jeu.pointPour("Nico");
+    jeu.pointPour("Clementine");
+    jeu.pointPour("Nico");
+    jeu.pointPour("Clementine");
+    jeu.pointPour("Nico");
+    jeu.pointPour("Clementine");
+
+    expect(jeu.score()).toBe("Égalité");
+  });
 });
